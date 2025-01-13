@@ -122,6 +122,11 @@ ros2 launch allegro_hand_controllers allegro_hand.launch.py MOVEIT:=true
 ros2 launch allegro_hand_controllers allegro_hand.launch.py GUI:=true
 ~~~
 
+- If you want to control Allegro Hand through RS-485:
+~~~bash
+ros2 launch allegro_hand_controllers allegro_hand.launch.py RS485:=true
+~~~  
+
 ## Control more than one hand
 
 ### CAN Communication
