@@ -4,7 +4,7 @@ This is the official release to control Allegro Hand V5-3Finger with ROS2(**Only
 You can find our latest Allegro Hand V5 4finger ROS2 package :(https://github.com/Wonikrobotics-git/allegro_hand_ros2_v5)
 And the interfaces and controllers have been improved and rewritten by Soohoon Yang(Hibo) from Wonik Robotics.
 
-**We support three additional actions same as Allegro Hand V5 4finger does.**
+**We support three additional actions just like the Allegro Hand V5 4finger does.**
 - Visualize Allegro Hand V5 changing in real time using Rviz2.
 - Save customize pose using MOVEIT2 and move to the saved pose.
 - Simply control hand with GUI tool instead of using keyboard.
