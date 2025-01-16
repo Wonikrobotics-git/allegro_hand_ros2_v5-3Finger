@@ -190,7 +190,7 @@ ros2 run allegro_hand_keyboards allegro_hand_keyboard --ros-args allegroHand_0/l
 ## MOVEIT2 
 
 Please refer to the ROS1 manual for guidance.
-Our latest Allegro Hand V5-3Finger ROS1 package : [ROS1](https://github.com/Wonikrobotics-git/allegro_hand_ros_v5-3Finger)
+Our latest Allegro Hand V5-3Finger ROS1 package : [V5-3finger ROS1](https://github.com/Wonikrobotics-git/allegro_hand_ros_v5-3Finger)
 
 **Make sure to install MOVEIT2 first in your PC and should install several additional packages to operate it**
 You can find installation guide in here : [MOVEIT2](https://moveit.picknik.ai/main/doc/tutorials/getting_started/getting_started.html)
