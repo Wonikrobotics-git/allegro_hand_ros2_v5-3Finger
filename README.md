@@ -189,7 +189,7 @@ ros2 run allegro_hand_keyboards allegro_hand_keyboard --ros-args allegroHand_0/l
 **These are example commands.You may need to change CAN_DEVICE, PORT and NUM arguments accroding to your system.**
 ## MOVEIT2 
 
-These newly added feature function identically to their ROS1 counterparts. Please refer to the ROS1 manual for guidance.
+Please refer to the ROS1 manual for guidance.
 Our latest Allegro Hand V5-3Finger ROS1 package : [ROS1](https://github.com/Wonikrobotics-git/allegro_hand_ros_v5-3Finger)
 
 **Make sure to install MOVEIT2 first in your PC and should install several additional packages to operate it**
