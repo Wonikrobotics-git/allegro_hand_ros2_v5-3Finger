@@ -1,6 +1,6 @@
 # Allegro_Hand_ROS2_v5-3Finger
 
-This is the official release to control Allegro Hand V5-3Finger with ROS2(**Only 3Finger supported). Mostly, it is based on the release of Allegro Hand V5 4finger ROS2 package.
+This is the official release to control Allegro Hand V5-3Finger with ROS2(**Only 3Finger supported). Mostly, it is based on the release of Allegro Hand V5 4finger ROS2 package and V5 3finger ROS1 package.
 You can find our latest Allegro Hand V5 4finger ROS2 package :(https://github.com/Wonikrobotics-git/allegro_hand_ros2_v5)
 And the interfaces and controllers have been improved and rewritten by Soohoon Yang(Hibo) from Wonik Robotics.
 
