@@ -1,3 +1,7 @@
+#
+<img src="https://github.com/user-attachments/assets/4be18919-6ce6-4d05-847f-1b6265261c47" width="400" align="left">
+<img src="https://github.com/user-attachments/assets/7383896b-64b2-4eb1-bbfe-ab92788fad34" width="400" align="center">
+
 # Allegro_Hand_ROS2_v5-3Finger
 
 This is the official release to control Allegro Hand V5-3Finger with ROS2(**Only 3Finger supported). Mostly, it is based on the release of Allegro Hand V5 4finger ROS2 package and V5 3finger ROS1 package.
