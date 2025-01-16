@@ -169,7 +169,7 @@ ros2 launch allegro_hand_controllers allegro_hand.launch.py RS485:=true PORT:=/d
 
 Termianl 2:
 ~~~bash
-ros2 launch allegro_hand_controllers allegro_hand.launch.py RS485:=true PORT:=/dev/ttyUSB1 NUM:=0
+ros2 launch allegro_hand_controllers allegro_hand.launch.py RS485:=true PORT:=/dev/ttyUSB1 NUM:=1
 ~~~
 
 To control first hand,
