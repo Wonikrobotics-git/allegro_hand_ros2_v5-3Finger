@@ -62,6 +62,7 @@ mkdir allegro_ws
 ~~~bash
 sudo apt-get update
 sudo apt-get install ros-<distro>-xacro
+sudo apt install ros-humble-moveit
 ~~~
 
 3. Download ROS2 package for Allegro Hand V5 using below command.
