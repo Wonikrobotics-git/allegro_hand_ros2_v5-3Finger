@@ -63,6 +63,9 @@ mkdir allegro_ws
 sudo apt-get update
 sudo apt-get install ros-<distro>-xacro
 sudo apt install ros-humble-moveit
+sudo apt install ros-<distro>-controller-manager
+sudo apt install ros-<distro>-joint-state-broadcaster
+sudo apt install ros-<distro>-joint-trajectory-controller
 ~~~
 
 3. Download ROS2 package for Allegro Hand V5 using below command.
