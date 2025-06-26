@@ -30,6 +30,12 @@ def generate_launch_description():
         description='Flag to enable/disable GUI'
     )
 
+    declare_sim_arg = DeclareLaunchArgument(
+        'ISAAC',
+        default_value='false',
+        description='Flag to enable/disable ISAAC SIM2REAL'
+    )
+
     declare_polling_arg = DeclareLaunchArgument(
         'POLLING',
         default_value='true',
@@ -96,10 +102,11 @@ def generate_launch_description():
         declare_polling_arg,
         declare_can_device_arg,
         declare_num_arg,
-		declare_moveit_arg,
-		declare_gui_arg,
-		declare_rs485_arg,
-		declare_port_arg,
+        declare_moveit_arg,
+        declare_gui_arg,
+        declare_rs485_arg,
+        declare_port_arg,
+        declare_sim_arg,
         OpaqueFunction(function=setup_can,
 					   condition=UnlessCondition(LaunchConfiguration('RS485'))),
         Node(
@@ -128,7 +135,8 @@ def generate_launch_description():
         ),		
         Node(
             package='robot_state_publisher',
-            output='screen',
+            output='log',
+            arguments=['--ros-args', '--log-level', 'WARN'],
             executable='robot_state_publisher',
             parameters=[{'robot_description': Command(['xacro ', urdf_path])}],
             remappings=[
@@ -156,6 +164,13 @@ def generate_launch_description():
 				        ('forcechange',PythonExpression(["'allegroHand_",LaunchConfiguration('NUM'),"/force_chg'"])),
 				        ('timechange',PythonExpression(["'allegroHand_",LaunchConfiguration('NUM'),"/time_chg'"]))],		
             condition=IfCondition(LaunchConfiguration('GUI'))
+        ),
+        Node(
+            package='allegro_hand_isaacsim',
+            executable='allegro_hand_sim2real',
+            output='screen',
+			remappings=[('allegroHand/joint_cmd',PythonExpression(["'allegroHand_",LaunchConfiguration('NUM'),"/joint_cmd'"]))],		
+            condition=IfCondition(LaunchConfiguration('ISAAC'))
         )
         
     ])

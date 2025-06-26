@@ -58,6 +58,8 @@ AllegroNode::AllegroNode(const std::string nodeName, bool sim /* = false */)
   // Advertise current joint state publisher and subscribe to desired joint
   // states.
   joint_state_pub = this->create_publisher<sensor_msgs::msg::JointState>(JOINT_STATE_TOPIC, 3);
+  tactile_sensor_pub = this->create_publisher<std_msgs::msg::Int32MultiArray>(TACTILE_SENSOR_TOPIC, 10);   
+
   joint_cmd_sub = this->create_subscription<sensor_msgs::msg::JointState>(DESIRED_STATE_TOPIC, 1, // queue size
                                  std::bind(&AllegroNode::desiredStateCallback, this, std::placeholders::_1));
   time_sub = this->create_subscription<std_msgs::msg::Float32>("timechange", 1, // queue size
@@ -98,6 +100,8 @@ void AllegroNode::publishData() {
     current_joint_state.velocity[i] = current_velocity[i];
     current_joint_state.effort[i] = desired_torque[i];
   }
+  tactile_sensor.data = std::vector<int>(std::begin(fingertip_sensor), std::end(fingertip_sensor));
+  tactile_sensor_pub->publish(tactile_sensor);
   joint_state_pub->publish(current_joint_state);
 }
 
@@ -128,6 +132,13 @@ void AllegroNode::updateController() {
       // update joint positions:
       canDevice->getJointInfo(current_position);
 
+      for(int i =0; i<9; i++){
+          if(current_position[i] < -3.14)
+            current_position[i] += 3.14;
+          if(current_position[i] > 3.14)
+            current_position[i] -= 3.14;
+      }
+
       OperatingMode = 0;
 
       if (OperatingMode == 0) {
@@ -137,7 +148,7 @@ void AllegroNode::updateController() {
           f[0] = f[1] = f[2] = 5.0f;
       }
 
-
+     // std::cout << current_position[1]*180/3.141592 <<" "<< current_position[4]*180/3.141592<<" "<<current_position[7]*180/3.141592<<" "<<std::endl;
       // calculate control torque:
       computeDesiredTorque();
 

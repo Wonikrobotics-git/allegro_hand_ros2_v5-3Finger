@@ -30,10 +30,27 @@ These packages are tested on ROS2 Humble(Ubuntu 22.04). It will likely not work 
 - allegro_hand_driver : Main driver for sending and receiving data with the Allegro Hand.
   	- CANAPI : Drivers for CAN communication.
   	- rs485 : Drivers for RS-485 communication.
+- allegro_hand_isaacsim : Node that receives position datas from ISAAC SIM, sorts them in correct order and resends the datas to REAL Allegro Hand.
 - allegro_hand_keyboard : Node that sends the command to control Allegro Hand. All commands need to be pre-defined.
 - allegro_hand_moveit : Provide MOVEIT2 package for Allegro Hand V5-3Finger.
 - allegro_hand_gui : Node that control the allegro hand with gui program.
 - bhand : Library files for the predefined grasps and actions., available on 64 bit versions.
+  - ⚠ **Default: x86-64-bit.** If using a **ARM64**, update the symlink accordingly from [here](https://github.com/Wonikrobotics-git/Bhandlib_ARM).
+ 
+## Topic description
+
+- Control
+	- /allegroHand_(NUM)/lib_cmd :  Hand command.
+ 	- /allegroHand_(NUM)/joint_cmd : Desired hand joint positions and control REAL Allegro Hand.
+  	- /allegroHand_(NUM)/force_chg : Change grasp force of grasping algrotihm(grasp_3).
+  	- /allegroHand_(NUM)/time_chg : Change time of moving target positions of each joints.
+  	- /allegroHand_(NUM)/envelop_torque : Change torque of envelop command.
+- Joint States
+  	- /allegroHand_(NUM)/joint_states : REAL Allegro Hand current joint positions.
+  	- /allegroHand_sim/joint_states : ISAAC SIM Allegro Hand current joint positions.
+- Sensors
+  	- /allegroHand_(NUM)/tactile_sensors : REAL tactile sensors data { Finger1 , Finger2 , Finger3 }.
+  	- /allegroHand_sim/contact_sensors : ISAAC SIM contact sensors data { Finger1 , Finger2 , Finger3 }.
 
 ## Install the PCAN driver
 
@@ -63,9 +80,6 @@ mkdir allegro_ws
 sudo apt-get update
 sudo apt-get install ros-<distro>-xacro
 sudo apt install ros-humble-moveit
-sudo apt install ros-<distro>-controller-manager
-sudo apt install ros-<distro>-joint-state-broadcaster
-sudo apt install ros-<distro>-joint-trajectory-controller
 ~~~
 
 3. Download ROS2 package for Allegro Hand V5 using below command.
@@ -113,6 +127,7 @@ VISUALIZE:=true|false (default is false)
 MOVEIT:=true|false (default is false)
 GUI:=true|false (default is false)
 RS485:=true|false (default is false)
+ISAAC:=true|false (default is false)
 ~~~
 
 - If you want to visualize Allegro Hand on Rviz2:
@@ -133,7 +148,12 @@ ros2 launch allegro_hand_controllers allegro_hand.launch.py GUI:=true
 - If you want to control Allegro Hand through RS-485:
 ~~~bash
 ros2 launch allegro_hand_controllers allegro_hand.launch.py RS485:=true
-~~~  
+~~~
+
+- If you want to use Allegro Hand with ISAAC SIM SIM2REAL:
+~~~bash
+ros2 launch allegro_hand_controllers allegro_hand.launch.py ISAAC:=true
+~~~
 
 ## Control more than one hand
 
@@ -195,6 +215,14 @@ ros2 run allegro_hand_keyboards allegro_hand_keyboard --ros-args allegroHand_0/l
 ~~~
 
 **These are example commands.You may need to change CAN_DEVICE, PORT and NUM arguments accroding to your system.**
+
+## ISAACSIM
+
+We now introuce two features —REAL2SIM and SIM2REAL—that integrate the Allegro Hand V5 with Isaac Sim.
+
+Please refer to the following guide for detailed information : [allegro_hand_isaacsim](https://github.com/Wonikrobotics-git/private_allegro_ros2_v5/tree/main/3finger/src/allegro_hand_isaacsim)
+
+
 ## MOVEIT2 
 
 Please refer to the ROS1 manual for guidance.
@@ -207,3 +235,4 @@ You can find installation guide in here : [MOVEIT2](https://moveit.picknik.ai/ma
 
 These newly added feature function identically to their ROS1 counterparts. Please refer to the ROS1 manual for guidance.
 Our latest Allegro Hand V5 ROS1 package : [ROS1](https://github.com/Wonikrobotics-git/allegro_hand_ros_v5-3Finger)
+
