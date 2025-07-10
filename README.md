@@ -3,7 +3,11 @@
 <img src="https://github.com/user-attachments/assets/7383896b-64b2-4eb1-bbfe-ab92788fad34" width="400" align="center">
 
 # Allegro_Hand_ROS2_v5-3Finger
-
+> [!IMPORTANT]</br>
+> **Date : 25/07/10**</br>
+> **We have recently resolved an issue where some fingertip sensor values were delayed. To address this, we have uploaded the updated firmware at the link below. Please update the firmware and download and build the ROS2 package again.**</br>
+> [allegro_hand_v5_firmware](https://github.com/Wonikrobotics-git/allegro_hand_v5_firmware)
+>
 This is the official release to control Allegro Hand V5-3Finger with ROS2(**Only 3Finger supported). Mostly, it is based on the release of Allegro Hand V5 4finger ROS2 package and V5 3finger ROS1 package.
 You can find our latest Allegro Hand V5 4finger ROS2 package :(https://github.com/Wonikrobotics-git/allegro_hand_ros2_v5)
 And the interfaces and controllers have been improved and rewritten by Soohoon Yang(Hibo) from Wonik Robotics.
