@@ -70,14 +70,14 @@ CANAPI_BEGIN
 #define ID_CMD_SET_POSE_3               0xE2
 
 #define ID_CMD_SET_PERIOD               0x81
-#define ID_CMD_FINGERTIP				 0xF0
-#define ID_CMD_FINGERTIP_1				 (ID_CMD_FINGERTIP+0)
-#define ID_CMD_FINGERTIP_2				 (ID_CMD_FINGERTIP+1)
-#define ID_CMD_FINGERTIP_3				 (ID_CMD_FINGERTIP+2)
+#define ID_CMD_FINGERTIP				        0x50
+#define ID_CMD_FINGERTIP_1				      (ID_CMD_FINGERTIP+0)
+#define ID_CMD_FINGERTIP_2				      (ID_CMD_FINGERTIP+1)
+#define ID_CMD_FINGERTIP_3				      (ID_CMD_FINGERTIP+2)
 
 
-#define ID_CMD_PICK_STATUS				 0x11
-#define ID_CMD_PLACE_STATUS				 0x12
+#define ID_CMD_PICK_STATUS				      0x11
+#define ID_CMD_PLACE_STATUS				      0x12
 
 #define ID_CMD_CONFIG                   0x68
 
